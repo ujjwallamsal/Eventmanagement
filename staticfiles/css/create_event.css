@@ -1,0 +1,144 @@
+/* General Form Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Create Event Section */
+.create-event-section {
+    background-color: #fff;
+    padding: 50px 0;
+    margin: 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-event-section .container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.create-event-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #feb47b;
+    outline: none;
+}
+
+/* Textarea Styling */
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #feb47b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #333;
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+/* Success/Error Messages */
+.messages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.messages li {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+}
+
+.messages .success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.messages .error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .create-event-section .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+    .create-event-section h2 {
+        font-size: 28px;
+    }
+    .btn {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .btn-secondary {
+        margin-left: 0;
+    }
+}

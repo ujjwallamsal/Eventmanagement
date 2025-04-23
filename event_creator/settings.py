@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-pa3gn%+69sq(hj+!9!@5jdj(u$zx%c0a$ss(u_yak36&vpbm!w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
-# Application definition
+# Application definitionS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -131,3 +131,7 @@ LOGIN_REDIRECT_URL = '/'   # Or any page you want to redirect users to after log
 
 
 
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
