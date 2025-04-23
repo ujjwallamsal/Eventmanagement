@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventCreator Pro - Organize with Ease</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">EventCreator Pro</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{% url 'index' %}" class="active">Home</a></li>                    
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                    <li><a href="{% url 'add_contact' %}">Contacts</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to EventCreator Pro</h1>
+            <p>Organize and manage your events effortlessly with our powerful tools.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'create_event' %}" class="cta-button primary">Create New Event</a>
+                <a href="{% url 'event_list' %}" class="cta-button secondary">See Events</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EventCreator Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

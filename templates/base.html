@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Function Creator App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_event.css' %}" />
+    <script src="{% static 'js/scripts.js' %}" defer></script>
+    <style>
+        /* Responsive container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Responsive buttons */
+        .button, button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .button:hover, button:hover {
+            background-color: #0056b3;
+        }
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+            nav ul li {
+                margin-bottom: 10px;
+            }
+            .container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <ul style="list-style:none; display:flex; justify-content:space-between; align-items:center; padding:0; margin:0;">
+                    <li><a href="{% url 'home' %}" class="button">Home</a></li>
+                    <li><a href="{% url 'create_event' %}" class="button">Create Event</a></li>
+                    <li><a href="{% url 'add_contact' %}" class="button">Contacts</a></li>
+                    <li><a href="{% url 'notifications_list' %}" class="button">Notifications</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}" class="button">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}" class="button">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer style="text-align:center; padding:20px 0; margin-top:40px; border-top:1px solid #ccc;">
+        &copy; 2024 Function Creator App. All rights reserved.
+    </footer>
+</body>
+</html>

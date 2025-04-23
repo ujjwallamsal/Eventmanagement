@@ -1,0 +1,29 @@
+{% extends "events/home.html" %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block content %}
+<section class="edit-event">
+    <h2>Edit Event</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Event Name</label>
+        <input type="text" id="name" name="name" value="{{ event.name }}" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required>{{ event.description }}</textarea>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="{{ event.location }}" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" value="{{ event.date }}" required>
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" value="{{ event.time }}" required>
+
+        <button type="submit" name="save">Update</button>
+        <a href="{% url 'home' %}" class="cancel-button">Cancel</a>
+    </form>
+</section>
+{% endblock %}

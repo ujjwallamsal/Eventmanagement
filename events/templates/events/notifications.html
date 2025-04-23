@@ -1,0 +1,20 @@
+{% extends "events/home.html" %}
+
+{% block content %}
+<h2>Your Notifications</h2>
+
+{% if notifications %}
+    <ul>
+    {% for notification in notifications %}
+        <li>
+            Post on event "{{ notification.post.event.name }}": {{ notification.post.post_text|truncatewords:20 }}
+            <a href="{% url 'mark_notification_read' notification.id %}">Mark as read</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No new notifications.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Function Creator App{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <h1>Welcome to Function Creator App</h1>
+        <p>Organize and manage your events effortlessly with our powerful tools.</p>
+        <div class="hero-buttons">
+            <a href="{% url 'create_event' %}" class="button primary">Create New Event</a>
+            <a href="{% url 'home' %}" class="button secondary">See Events</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Event List</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                <strong>{{ event.name }}</strong><br>
+                <p>{{ event.description }}</p>
+                <p>Date: {{ event.date }} at {{ event.time }}</p>
+                <p>Location: {{ event.location }}</p>
+                <p>
+                    <a href="{% url 'event_detail' event.id %}">View Details</a>
+                </p>
+                <p>
+                    <a href="{% url 'rsvp_event' event.id 'Accepted' %}">Accept</a> |
+                    <a href="{% url 'rsvp_event' event.id 'Declined' %}">Decline</a>
+                </p>
+            </li>
+        {% empty %}
+            <li>No events available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_event' %}">Create a New Event</a>
+</body>
+</html>

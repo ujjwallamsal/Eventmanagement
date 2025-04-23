@@ -1,0 +1,17 @@
+{% extends "events/home.html" %}
+
+{% block content %}
+<h2>Send Invitations for {{ event.name }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Select contacts to invite:</label><br>
+    {% for contact in contacts %}
+        <input type="checkbox" name="contacts" value="{{ contact.id }}" id="contact_{{ contact.id }}">
+        <label for="contact_{{ contact.id }}">{{ contact.name }} ({{ contact.email }})</label><br>
+    {% empty %}
+        <p>No contacts found. Please <a href="{% url 'add_contact' %}">add contacts</a> first.</p>
+    {% endfor %}
+    <button type="submit">Send Invitations</button>
+</form>
+{% endblock %}

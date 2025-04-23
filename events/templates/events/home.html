@@ -1,0 +1,57 @@
+{% extends "events/index.html" %}
+
+{% block title %}Home - Function Creator App{% endblock %}
+
+{% block content %}
+<section class="hero-section" style="background: linear-gradient(135deg, #ff7e5f, #feb47b); color: white; padding: 60px 20px; border-radius: 12px; margin-bottom: 40px;">
+    <div class="container">
+        <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px;">Welcome to Function Creator App</h1>
+        <p style="font-size: 1.25rem; max-width: 600px; margin-bottom: 30px;">Organize your events, invite contacts, create posts, and keep everyone notified seamlessly.</p>
+        <a href="{% url 'create_event' %}" class="button" style="background-color: #333; padding: 15px 30px; font-size: 1.1rem;">Create Your First Event</a>
+    </div>
+</section>
+
+<section class="container">
+    <h2 style="margin-bottom: 20px; color: #333;">Upcoming Events</h2>
+    <div class="events-container" id="events-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        {% for event in events %}
+        <div class="event-card" style="background: white; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); padding: 20px; width: calc(33% - 20px); box-sizing: border-box;">
+            <h3 style="color: #ff7e5f;">{{ event.name }}</h3>
+            <p style="color: #666;">{{ event.description|truncatewords:25 }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+            <p><strong>Date:</strong> {{ event.date }}</p>
+            <p><strong>Time:</strong> {{ event.time }}</p>
+            <div class="event-actions" style="margin-top: 15px;">
+                <a href="{% url 'event_detail' event.id %}" class="button" style="background-color: #ff7e5f; padding: 10px 20px; font-size: 1rem;">View Details</a>
+                <a href="{% url 'send_invitations' event.id %}" class="button" style="background-color: #feb47b; padding: 10px 20px; font-size: 1rem;">Invite</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No upcoming events found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<style>
+@media (max-width: 1024px) {
+    .event-card {
+        width: calc(50% - 20px) !important;
+    }
+}
+@media (max-width: 600px) {
+    .event-card {
+        width: 100% !important;
+    }
+    .hero-section {
+        padding: 40px 10px !important;
+        text-align: center !important;
+    }
+    .hero-section h1 {
+        font-size: 2rem !important;
+    }
+    .hero-section p {
+        font-size: 1rem !important;
+    }
+}
+</style>
+{% endblock %}

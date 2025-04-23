@@ -1,0 +1,52 @@
+{% extends "events/home.html" %}
+
+{% block title %}Event Details{% endblock %}
+
+{% block content %}
+<section class="event-detail">
+    <h2>{{ event.name }}</h2>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Time:</strong> {{ event.time }}</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'rsvp_event' event.id 'Accepted' %}" class="button">Accept</a>
+        <a href="{% url 'rsvp_event' event.id 'Declined' %}" class="button">Decline</a>
+    {% endif %}
+    <a href="{% url 'home' %}" class="button">Back to Home</a>
+
+    <hr>
+
+    <h3>Posts</h3>
+    <a href="{% url 'create_post' event.id %}" class="button">Create Post</a>
+    {% if posts %}
+        <ul>
+        {% for post in posts %}
+            <li>
+                <strong>{{ post.created_by.username }}</strong> ({{ post.created_at|date:"Y-m-d H:i" }}):<br>
+                {{ post.post_text }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts yet.</p>
+    {% endif %}
+
+    <hr>
+
+    <h3>Notifications</h3>
+    {% if notifications %}
+        <ul>
+        {% for notification in notifications %}
+            <li>
+                New post on event: "{{ notification.post.post_text|truncatewords:15 }}"
+                <a href="{% url 'mark_notification_read' notification.id %}">Mark as read</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No new notifications.</p>
+    {% endif %}
+</section>
+{% endblock %}

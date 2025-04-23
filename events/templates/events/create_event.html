@@ -1,0 +1,61 @@
+{% extends "events/home.html" %}
+
+{% block content %}
+<section class="create-event-section">
+    <div class="container">
+        <h2>Create New Event</h2>
+
+        <!-- Display success or error messages -->
+        {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Event creation form -->
+        <form method="POST" class="event-form">
+            {% csrf_token %}
+            
+            <!-- Event Name -->
+            <div class="form-group">
+                <label for="name">Event Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter event name" required>
+            </div>
+
+            <!-- Event Description -->
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Enter event description" required></textarea>
+            </div>
+
+            <!-- Event Location -->
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter event location" required>
+            </div>
+
+            <!-- Event Date -->
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <!-- Event Time -->
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "events/home.html" %}
+
+{% block content %}
+<h2>Create Post for {{ event.name }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Post</button>
+    <a href="{% url 'event_detail' event.id %}">Cancel</a>
+</form>
+{% endblock %}
