@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pa3gn%+69sq(hj+!9!@5jdj(u$zx%c0a$ss(u_yak36&vpbm!w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['event-creator.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definitionS
@@ -135,3 +135,9 @@ import os
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+# Optional: database for production (Render automatically sets DATABASE_URL)
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(default='sqlite:///db.sqlite3')
+

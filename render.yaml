@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: event-creator
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn event_creator.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: event_creator.settings
+      - key: PYTHON_VERSION
+        value: 3.10
